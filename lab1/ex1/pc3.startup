@@ -1,3 +1,17 @@
+## Comandi dati dall'esercizio ##
+
 ip addr flush eth0
 
 
+
+## Comandi per risolvere l'esercizio ##  (commenta tutto per eseguire l'esercizio a mano)
+
+echo -e "\nSeguono comandi che risolvono l'esercizio.\nCommentali in pc3.startup per farlo a mano.\n\n"
+
+# Settare pc3 con ifconfig/route
+
+ifconfig eth0 192.168.100.27 netmask 255.255.255.248
+route add default gw 192.168.100.30
+echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+
+echo -e '\n\nProva wget www.google.com per testare la connessione.\n\n'
