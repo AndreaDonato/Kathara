@@ -1,1 +1,4 @@
+ip addr add 2001:DB8:CAFE:1::102/64 dev eth0
+ip route add default via 2001:DB8:CAFE:1::1
 
+# Test with ping 2001:db8:cafe:2:104

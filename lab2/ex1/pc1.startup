@@ -1,1 +1,12 @@
+cd /etc/network/interfaces.d/
 
+echo 'auto eth0' > eth0
+echo 'allow-hotplug eth0' >> eth0
+
+echo -e '\niface eth0 inet6 static' >> eth0
+echo -e '\taddress 2001:db8:CAFE:1::101/64' >> eth0
+echo -e '\tgateway 2001:db8:CAFE:1::1' >> eth0
+
+ifup eth0
+
+echo -e '\n\nTest with ping 2001:db8:cafe:2:104\n'
