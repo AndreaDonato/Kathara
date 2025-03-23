@@ -8,3 +8,11 @@ apt install -f udhcpd
 
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
+# Questo avvia in background il server
+#cp /shared/udhcpd.conf /etc/udhcpd.conf
+#sleep 2 && udhcpd -f /etc/udchpd.conf &
+
+# A quanto pare finché eseguo i comandi in .startup lui non trova il file udhcpd.conf
+# Per evitare di impazzire facciamo tutto a mano.
+
+echo -e "\n\n\tFai partire il server DHCP con udhcpd -f /etc/udchpd.conf\n\n"

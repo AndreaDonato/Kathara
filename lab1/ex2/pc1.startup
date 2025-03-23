@@ -1,3 +1,22 @@
 ip addr flush eth0
 umount /etc/resolv.conf
 
+## Configurazione
+
+cd /etc/network/interfaces.d
+
+echo 'auto eth0' > eth0
+
+echo 'iface eth0 inet dhcp' >> eth0
+
+cd /etc
+
+echo 'nameserver 8.8.8.8' > resolv.conf
+
+
+# Aspetta un attimo per far avviare il server, poi avvia le pratiche
+
+#sleep 5
+#ifup eth0
+
+echo -e "\n\n\tFai partire il client DHCP con ifup eth0\n\n"

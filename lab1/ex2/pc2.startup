@@ -1,3 +1,5 @@
 ip addr flush eth0
 umount /etc/resolv.conf
 
+
+echo -e "\n\n\tFai partire il client DHCP con dhclient\n\n"
