@@ -3,7 +3,6 @@
 ip addr flush eth0
 
 
-
 ## Comandi per risolvere l'esercizio ##  (commenta tutto per eseguire l'esercizio a mano)
 
 echo -e "\nSeguono comandi che risolvono l'esercizio.\nCommentali in pc2.startup per farlo a mano.\n\n"

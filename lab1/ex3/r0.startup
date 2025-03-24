@@ -1,2 +1,6 @@
-iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+# Address su Internal
+ip addr replace 172.16.255.254/16 dev eth0
 
+echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE

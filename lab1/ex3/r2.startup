@@ -1,0 +1,17 @@
+# Address sulla LAN2
+ip addr replace 172.16.2.254/24 dev eth0
+
+# Address su Internal
+ip addr replace 172.16.0.2/16 dev eth1
+
+# Via per LAN1
+ip route add 172.16.2.0/24 via 172.16.0.1
+
+# Default Gateway r0
+ip route add default via 172.16.255.254/16
+
+echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+
+
+# NATta i due pc in LAN2
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
