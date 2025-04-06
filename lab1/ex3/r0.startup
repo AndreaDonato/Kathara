@@ -1,2 +1,9 @@
-iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+# Internal
+ip addr replace 172.16.255.254/16 dev eth0
 
+# Routing
+ip route add 172.16.2.0/24 via 172.16.0.2
+ip route add 172.16.1.0/24 via 172.16.0.1
+
+# NAT verso l'esterno
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE

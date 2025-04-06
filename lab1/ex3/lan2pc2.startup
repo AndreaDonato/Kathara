@@ -1,2 +1,8 @@
-ip addr flush eth0
+# LAN 1
+ip addr replace 172.16.2.2/24 dev eth0
 
+# Nameserver
+echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+
+# Routing Rules
+ip route add default via 172.16.2.254

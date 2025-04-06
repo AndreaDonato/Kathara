@@ -1,0 +1,9 @@
+# LAN 1
+ip addr replace 172.16.1.254/24 dev eth1
+
+# Internal
+ip addr replace 172.16.0.1/16 dev eth0
+
+# Routing Rules
+ip route add 172.16.2.0/24 via 172.16.0.2
+ip route add default via 172.16.255.254
