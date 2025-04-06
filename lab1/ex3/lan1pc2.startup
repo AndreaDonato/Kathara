@@ -1,16 +1,2 @@
 ip addr flush eth0
 
-cd /etc/network/interfaces.d
-
-echo 'auto eth0' >> eth0
-
-# -e serve ad utilizzare gli escape (\n come newline e \t come tab)
-echo -e '\niface eth0 inet static' >> eth0
-echo -e '\taddress 172.16.1.2/24' >> eth0
-echo -e '\tgateway 172.16.1.254' >> eth0
-
-ifup eth0
-
-echo 'nameserver 8.8.8.8' > /etc/resolv.conf
-
-echo -e '\n\nProva wget www.google.com per testare la connessione.\n\n'
