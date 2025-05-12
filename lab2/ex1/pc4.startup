@@ -8,3 +8,5 @@ echo -e '\taddress 2001:db8:CAFE:2::104/64' >> eth0
 echo -e '\tgateway 2001:db8:CAFE:2::1' >> eth0
 
 ifup eth0
+
+cp /shared/hosts /etc/hosts
