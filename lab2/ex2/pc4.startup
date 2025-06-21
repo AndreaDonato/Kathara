@@ -1,0 +1,20 @@
+##############################
+###       Use EUI-64       ###
+##############################
+
+sysctl -w net.ipv6.conf.eth0.addr_gen_mode=0
+
+##############################
+###  Set Temporary Address ###
+##############################
+
+sysctl -w net.ipv6.conf.eth0.use_tempaddr=1
+sysctl -w net.ipv6.conf.eth0.temp_valid_lft=600
+sysctl -w net.ipv6.conf.eth0.temp_prefered_lft=60
+
+##############################
+###  SLAAC on iface eth0   ###
+##############################
+
+echo "iface eth0 inet6 auto" > /etc/network/interfaces.d/eth0
+ifup eth0

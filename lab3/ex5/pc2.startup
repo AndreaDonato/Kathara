@@ -1,0 +1,3 @@
+ip address add fe80::c2/64 dev eth0
+sysctl -w net.ipv6.conf.eth0.forwarding=0
+

@@ -1,4 +1,36 @@
-umount /etc/resolv.conf
-#dpkg -i /shared/dibbler-client*.deb
-#apt install -y dibbler-client
+##############################
+### flush pre-existing dns ###
+##############################
 
+umount /etc/resolv.conf
+
+
+##############################
+###    set up for SLAAC    ###
+##############################
+
+echo 'iface eth0 inet6 auto' > /etc/network/interfaces.d/eth0
+ifup eth0
+
+
+##############################
+### dpkg & install dibbler ###
+##############################
+
+dpkg -i /shared/dibbler-client*.deb
+apt install -y dibbler-client
+
+
+##############################
+###setup stateless dibbler ###
+##############################
+
+cd /etc/dibbler
+
+echo 'log-level 7' > client.conf
+echo 'stateless' >> client.conf
+echo 'iface eth0 { option dns-server }' >> client.conf
+
+sleep 10
+
+dibbler-client run &

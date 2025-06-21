@@ -1,1 +1,12 @@
+##############################
+###   Use Random Address   ###
+##############################
 
+sysctl -w net.ipv6.conf.eth0.addr_gen_mode=3
+
+##############################
+###  SLAAC on iface eth0   ###
+##############################
+
+echo "iface eth0 inet6 auto" > /etc/network/interfaces.d/eth0
+ifup eth0

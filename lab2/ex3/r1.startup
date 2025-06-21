@@ -1,4 +1,40 @@
+##############################
+### dpkg & install dnsmasq ###
+##############################
+
 echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 dpkg -i /shared/*.deb
 apt install -yf dnsmasq 
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 2001:4860:4860::8888" >> /etc/resolv.conf
+
+
+##############################
+### manually set addresses ###
+##############################
+
+ip -6 addr flush dev eth0
+ip -6 addr add fe80::1/64 dev eth0
+ip -6 addr add 2001:db8:fede:1::1/64 dev eth0
+
+
+##############################
+### Stateless DHCPv6 + DNS ###
+##############################
+
+# Il file originale è noioso da modificare
+# Ne creo un backup e lo sostituisco con uno minimale
+
+cd /etc
+mv dnsmasq.conf dnsmasq.conf.backup
+
+echo 'interface=eth0' > dnsmasq.conf
+echo 'enable-ra' >> dnsmasq.conf
+echo 'dhcp-range=::,::,constructor:eth0,ra-stateless,64' >> dnsmasq.conf
+echo 'domain-needed' >> dnsmasq.conf
+echo 'dhcp-option=option6:dns-server,[2001:4860:4860::8888]' >> dnsmasq.conf
+echo 'dhcp-option=option6:domain-search,example.local' >> dnsmasq.conf
+
+pkill dnsmasq
+dnsmasq -d &
+

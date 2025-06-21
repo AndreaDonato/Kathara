@@ -1,1 +1,22 @@
+##############################
+### flush pre-existing dns ###
+##############################
+
 umount /etc/resolv.conf
+
+
+##############################
+###    set up for SLAAC    ###
+##############################
+
+echo 'iface eth0 inet6 auto' > /etc/network/interfaces.d/eth0
+ifup eth0
+
+
+##############################
+###start stateless dhclient###
+##############################
+
+sleep 10
+
+dhclient -6 -S eth0

@@ -1,1 +1,6 @@
+##############################
+###  SLAAC on iface eth0   ###
+##############################
 
+echo "iface eth0 inet6 auto" > /etc/network/interfaces.d/eth0
+ifup eth0

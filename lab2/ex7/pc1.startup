@@ -1,3 +1,7 @@
+##############################
+### dpkg & install dnsmasq ###
+##############################
+
 dpkg -i shared/*.deb
 sysctl -w net.ipv6.conf.eth0.forwarding=0
 ip link set address 00:16:3e:ee:00:01 eth0
