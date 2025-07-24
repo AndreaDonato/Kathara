@@ -1,7 +1,14 @@
 ##############################
-### dpkg & install dnsmasq ###
+###  dpkg & install tools  ###
 ##############################
 
 dpkg -i shared/*.deb
+
+
+##############################
+###  setting non-router ip ###
+##############################
+
 sysctl -w net.ipv6.conf.eth0.forwarding=0
 ip link set address 00:16:3e:ee:00:01 eth0
+export PS1="$(id -un)@$(hostname):$(pwd)# "

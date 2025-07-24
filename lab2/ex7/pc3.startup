@@ -1,4 +1,15 @@
+##############################
+###  setting non-router ip ###
+##############################
+
 sysctl -w net.ipv6.conf.eth0.forwarding=0
 ip link set address 00:16:3e:ee:00:03 eth0
+
+
+###################################
+### try to set PS1 (won't work) ###
+###################################
+
 #PS1="$(pwd) $(hostname) $(id -un) "
-export PS1="$(id -un)@$(hostname) #"
+export PS1="$(id -un)@$(hostname):$(pwd)# "
+
