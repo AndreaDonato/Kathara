@@ -2,6 +2,8 @@
 
 error=0
 
+cd ~/Desktop/PND_Solutions
+
 for lab in $(ls -1 | grep "^lab"); do
 	#echo $lab
 	cd $lab
